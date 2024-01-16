@@ -1,22 +1,15 @@
-import { Client } from "pg";
-import { loadEnvConfig } from "@next/env";
+
+import { getClient } from '@/db';
 import {faker } from '@faker-js/faker';
 import bcrypt from 'bcrypt';
 
-const projectdir = process.cwd();
-loadEnvConfig(projectdir);
+
 
 async function loadFakeData(numUser: number = 10) {
     console.log("eucte load fake daa .generting "+ numUser + "users" );
 
-
-    const client = new Client({
-        user: process.env.POSTGRES_USER,
-        host:process.env.POSTGRES_HOST,
-        database:process.env.POSTGRES_NAME,
-        password:process.env.POSTGRES_PASSWORD,
-        port:5432
-    });
+    const client = await getClient();
+   
 
     await client.connect()
 
