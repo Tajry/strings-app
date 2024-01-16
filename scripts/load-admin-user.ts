@@ -4,8 +4,9 @@ import bcrypt from 'bcrypt';
 
 async function  loadAdminUser(username:string  , password:string) {
 
+    // console.log(password)
     const saltRounds = 10;
-    const hash = bcrypt.hash(username ,saltRounds);
+    const hash = await bcrypt.hash(password ,saltRounds);
     
 
     const client = await getClient();
