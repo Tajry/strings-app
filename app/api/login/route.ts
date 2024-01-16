@@ -34,7 +34,7 @@ export async function POST(request:Request) {
         sameSite:"strict",
         httpOnly:true,
         secure:true,
-    })
+    });
 
     return response;
 }
