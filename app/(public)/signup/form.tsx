@@ -86,6 +86,15 @@ export default function From() {
             </div>
         </div>
         <button type="submit" className='mt-5 bg-red-500 text-white p-3 rounded-lg' >Sign UP</button>
+        <div>
+            {error.map((error)=>{
+                return (
+                    <div key={error} className='text-red-500'>
+                        {error}
+                    </div>
+                )
+            })}
+        </div>
     </form>
   )
 }
