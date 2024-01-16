@@ -4,12 +4,19 @@ import bcrypt from 'bcrypt';
 
 async function  loadAdminUser(username:string  , password:string) {
 
+    const saltRounds = 10;
+    const hash = bcrypt.hash(username ,saltRounds);
+    
 
-    const clent = await getClient();
+    const client = await getClient();
+    await client.connect();
+    await client.query(
+        "insert into public.users(username ,password ,is_admin) values($1,$2 ,$3)",
+        [username ,hash ,true]
+    )
 
-
-    console.log("username "+username)
-    console.log("password "+password)
+    await client.end()
+    
 }
 
 let username = process.argv[2]
