@@ -16,12 +16,12 @@ export const Header = () => {
 
 
   return (
-   <header>
-        <div className='flex flex-row w-full p-5 bg-slate-800 rounded-lg my-2 items-center justify-between'>
+   <header className='flex flex-row w-full p-5 bg-slate-800 rounded-lg my-2 items-center justify-between'>
+        <div >
           <h1 className='font-mono text-lg'>Strings</h1>
-          <User user={data.data} href="account" />
         </div>
-      <div>
+        <div>
+          <User user={data.data} href="account" />
       </div>
    </header>
   )
