@@ -9,13 +9,13 @@ export async function middleware(request:NextRequest) {
 
     if (authenticatedAPIRoutes.includes(true)) {
         const cookie = request.cookies.get('jwt-token');
-
+        // console.log(cookie)
         if (!cookie || !cookie?.value) {
             return NextResponse.json({error:"unauthenticated"},{status:401})
         }
 
         try{
-            const secret = new TextEncoder().encode(process.env.JWT_SECREAT!)
+            const secret = new TextEncoder().encode(process.env.JWT_SECRET!)
             await jwtVerify(cookie.value , secret);
         }catch (error) {
             console.error(error)
