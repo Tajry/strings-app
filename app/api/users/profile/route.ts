@@ -11,7 +11,6 @@ export async function GET(request:Request) {
         "select id , username ,avatar from public.users where id = $1",
         [jwtPayload.sub]
     )
-    // console.log(res.rows)
     // if(res.rowCount == 0) {
     //     return NextResponse.json({msg:'no data'},{status:404})
     // }
