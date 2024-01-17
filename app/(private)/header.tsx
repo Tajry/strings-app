@@ -1,6 +1,7 @@
 'use client';
 import React from 'react'
 import useSWR from 'swr'
+import User from '../components/User';
 
 
 
@@ -16,7 +17,12 @@ export const Header = () => {
 
   return (
    <header>
-      {data.data.username}
+        <div className='flex flex-row w-full p-5 bg-slate-800 rounded-lg my-2 items-center justify-between'>
+          <h1 className='font-mono text-lg'>Strings</h1>
+          <User user={data.data} href="account" />
+        </div>
+      <div>
+      </div>
    </header>
   )
 }
