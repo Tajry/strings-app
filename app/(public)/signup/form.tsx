@@ -15,7 +15,9 @@ export default function From() {
         setError([])
 
         if (password != confirmpassword) {
-            error.push("password do not math.")
+            const newError  = []
+            newError.push("password do not math.")
+            setError(newError)
             return;
         }
 
