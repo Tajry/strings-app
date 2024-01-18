@@ -4,7 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(request:NextRequest) {
     const pathname = request.nextUrl.pathname;
     const authenticatedAPIRoutes = [
-        pathname.startsWith("/api/users")
+        pathname.startsWith("/api/users"),
+        pathname.startsWith("/api/posts"),
     ]
 
     if (authenticatedAPIRoutes.includes(true)) {
@@ -19,7 +20,7 @@ export async function middleware(request:NextRequest) {
             await jwtVerify(cookie.value , secret);
         }catch (error) {
             console.error(error)
-            return NextResponse.json({error:"internal server error"},{status:500})
+            return NextResponse.json({error:"internal server error"},{status:401})
         }
      }
 }
