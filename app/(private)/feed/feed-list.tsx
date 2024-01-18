@@ -1,4 +1,5 @@
 
+import Post from '@/app/components/Post'
 import React from 'react'
 import useSWR from 'swr'
 
@@ -8,12 +9,12 @@ export default function FeedList({index}:{index:number}) {
     if (error) return  <div>failed to load</div>
     if (isLoading) return <div>loading....</div>
     return (
-        <div>
+        <ul>
             {data.data.map((post:PostI)=>{
                 return (
-                    <li>{post.content}</li>
+                    <li className='my-5' key={post.id}><Post post={post} /></li>
                 )
             })}
-        </div>
+        </ul>
     )
 }
