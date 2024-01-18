@@ -3,7 +3,7 @@ import React from 'react'
 export default function Footer() {
   return (
     <footer>
-        Footer
+        &copy;Strings {new Date().getFullYear()}
     </footer>
   )
 }
