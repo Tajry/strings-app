@@ -1,6 +1,7 @@
 
 export  const fetcher = async (url:RequestInfo | URL) =>{
     const res = await fetch(url);
+    console.log(res)
     if (!res.ok) {
       const msg = "an error cucurred shlt fetching ";
       const info =  await res.json();

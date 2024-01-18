@@ -16,8 +16,8 @@ export default function FeedContainer() {
   return (
     <div>
         {page}
-        <div>
-            <button onClick={()=> setCnt(cnt +1)}> Load More</button>
+        <div className='flex justify-center'>
+            <button className='bg-slate-900 p-2 rounded-lg' onClick={()=> setCnt(cnt +1)}> Load More</button>
         </div>
     </div>
   )
