@@ -25,7 +25,6 @@ export async function GET(requst:Request) {
     }
 
     const res = await sql(statement , [jwtPlayload.sub , limit ,offset])
-    console.log(res.rows[0])
 
     return NextResponse.json({data:res.rows})
 }

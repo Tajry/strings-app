@@ -6,7 +6,7 @@ function PostContainer({username}:{username:string}) {
     const page = [];
     for (let i = 0 ; i< cnt;i++) {
         page.push(
-            <PostList index={cnt} username={username} key={i} />
+            <PostList index={i} username={username} key={i} />
         )
     }
   return (
