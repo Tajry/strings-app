@@ -17,6 +17,7 @@ export async function GET(
         [id ,limit ,offset] 
     )
 
+  
     return NextResponse.json({data:res.rows})
      
 }
