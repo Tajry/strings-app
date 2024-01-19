@@ -8,21 +8,24 @@ export async function GET(requst:Request) {
     const {searchParams} = new URL(requst.url) // get url
     const username = searchParams.get('username') // get name query string from url
     const page = (searchParams.get('page') && parseInt(searchParams.get('page')!)) || 0 // get page qury string from url
-
+    // console.log(username)
     const limit = 3 ;
     const offset = page * 3 ;
 
 
-    const statemet = `select p.* , u.avatar , u.username 
+   
+    const statement = `select p.*, p.created_at , u.avatar, u.username
     from posts p inner join users u
     on p.user_id = u.id where user_id = $1
-    order by created_at desc limit $2 offset $3`
+    order by created_at desc  limit $2 offset $3`;
 
+    
     if (username) {
         // TODO
     }
 
-    const res = await sql(statemet , [jwtPlayload.sub , limit ,offset])
+    const res = await sql(statement , [jwtPlayload.sub , limit ,offset])
+    console.log(res.rows[0])
 
     return NextResponse.json({data:res.rows})
 }

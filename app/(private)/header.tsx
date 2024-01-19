@@ -12,7 +12,7 @@ export const Header = () => {
   if (error) return <div>failed to load </div>
   if (isLoading) return <div>loading....</div>
 
-  console.log(data)
+  // console.log(data)
 
 
   return (
