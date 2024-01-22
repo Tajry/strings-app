@@ -15,6 +15,7 @@ export default function Form() {
         if (res.ok) {
             setPost("");
             mutate((key)=> typeof key === 'string' && key.startsWith("/api/posts")) // load auto postlist
+            // mutate("/api/posts" ,res.ok , false) // load auto postlist
         }
     }
 
