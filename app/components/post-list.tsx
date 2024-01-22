@@ -13,8 +13,8 @@ export default function PostList({index ,username}:{index:number,username:string
     <ul>
         {data.data.map((post:PostI)=>{
             return (
-                <li key={post.id}>
-                    <Post post={post}  />
+                <li key={post.id} >
+                    <Post post={post} key={post.id}  />
                 </li>
             )
         })}
