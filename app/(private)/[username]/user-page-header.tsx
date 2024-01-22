@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import React from 'react'
 import useSWR, { mutate } from 'swr'
 
@@ -13,7 +14,13 @@ const {data:dataFollow ,error:errorFollow , isLoading:isLoadingFollow} =  useSWR
 
   console.log(dataUser , dataFollow)
 
+  if (dataUser.data.length == 0) {
+    notFound();
+  }
+
   const user = dataUser.data[0];
+
+
   const handleUnfollow = async () =>{
     const res = await fetch('/api/follows/'+user.id ,{
         method:'delete'
