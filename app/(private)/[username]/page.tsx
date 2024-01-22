@@ -4,6 +4,8 @@
 import React from 'react'
 import UserPageHeader from './user-page-header'
 import useSWR from 'swr'
+import PostList from '@/app/components/post-list'
+import PostContainer from '@/app/components/post-container'
 
 export default function UserPage({params}:{params:{username:string}}) {
 
@@ -12,7 +14,7 @@ export default function UserPage({params}:{params:{username:string}}) {
   return (
     <div>
         <UserPageHeader username={params.username} />
-        <div>post container {params.username}</div>
+        <PostContainer username={params.username} />
     </div>
   )
 }

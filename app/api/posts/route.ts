@@ -22,6 +22,13 @@ export async function GET(requst:Request) {
     
     if (username) {
         // TODO
+        const userRes = await sql("select * from users where username = $1" , [username])
+        if (userRes.rowCount === 0 ) {
+            return NextResponse.json({error:"not found"},{status:404})
+        }
+        const user = userRes.rows[0]
+        const postRes = await sql(statement , [user.id ,limit ,offset])
+        return NextResponse.json({data:postRes.rows})
     }
 
     const res = await sql(statement , [jwtPlayload.sub , limit ,offset])

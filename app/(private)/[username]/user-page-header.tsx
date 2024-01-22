@@ -36,14 +36,14 @@ const {data:dataFollow ,error:errorFollow , isLoading:isLoadingFollow} =  useSWR
 
 
   return (
-   <header>
+   <header className='w-full bg-slate-800 p-2 rounded-lg flex flex-row justify-between'>
     <div>
-        <h1>{username}</h1>
+        <h1 className='text-lg font-bold'>{username}</h1>
         {dataFollow.data.length > 0 && (
-            <button onClick={handleUnfollow}>Unfollow</button>
+            <button onClick={handleUnfollow} className='bg-slate-900 p-2 rounded-lg'>Unfollow</button>
         )}
         {dataFollow.data.length == 0 && (
-            <button onClick={handleFollow}>follow</button>
+            <button onClick={handleFollow} className='bg-slate-900 p-2 rounded-lg'>follow</button>
         )}
     </div>
    </header>
