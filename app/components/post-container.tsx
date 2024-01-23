@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import PostList from './post-list';
 
-function PostContainer({username}:{username:string}) {
+function PostContainer({username ,showEditBtn}:{username:string ,showEditBtn?:boolean}) {
     const [cnt ,setCnt] =useState(1);
     const page = [];
     for (let i = 0 ; i< cnt;i++) {
         page.push(
-            <PostList index={i} username={username} key={i} />
+            <PostList index={i} username={username} key={i} showEditBtn={showEditBtn} />
         )
     }
   return (

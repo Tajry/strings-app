@@ -14,7 +14,7 @@ export default function UserPage({params}:{params:{username:string}}) {
   return (
     <div>
         <UserPageHeader username={params.username} />
-        <PostContainer username={params.username} />
+        <PostContainer username={params.username} showEditBtn={false} />
     </div>
   )
 }
