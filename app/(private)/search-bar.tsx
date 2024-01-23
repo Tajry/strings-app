@@ -1,12 +1,29 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react'
 import * as _ from 'lodash';
+import User from '../components/User';
 
 
 
 export default function SearchBar() {
     const [searchResults  , setSearchResults] = useState([])
-
+    const [visible ,setVisible] = useState(true);
     const debouncedFetchSearchResults = _.debounce(fetchSearchResults , 500);
+    const ref = useRef(null)
+    
+    useEffect(()=>{
+        const handleClickOutside = (e:MouseEvent) =>{
+            //@ts-ignore
+            if (ref.current && !ref.current.contains(e.target)) {
+                setVisible(false)
+            }
+
+        }
+        document.addEventListener('click' , handleClickOutside);
+        return ()=>{
+            document.addEventListener('click' , handleClickOutside);
+
+        }
+    })
     
     async function fetchSearchResults(searchText:string) {
         
@@ -14,20 +31,41 @@ export default function SearchBar() {
         if (res.ok) {
             const json = await res.json()
             // console.log(json.data)
+            setVisible(true)
             setSearchResults(json.data)
+        }else {
+            setSearchResults([])
         }
     }
 
+
+    function handleClick(e:React.MouseEvent<HTMLInputElement>) {
+        setVisible(true)
+    }
+
     const handleChange = async (event:ChangeEvent<HTMLInputElement>)=>{
-        console.log(event.currentTarget.value)
+        // console.log(event.currentTarget.value)
         debouncedFetchSearchResults(event.target.value)
         
     }
 
 
   return (
-    <div>
-        <input type="text" onChange={handleChange} className='p-2 rounded-lg bg-gray-700 my-y' placeholder='Search' />      
+    <div className='flex flex-row max-w-md w-full justify-end relative ' ref={ref}>
+        <input type="text" onChange={handleChange} onClick={handleClick} className='p-2 rounded-lg bg-gray-700 my-y max-w-sm' placeholder='Search' />    
+        
+        {visible && searchResults.length > 0 && (
+
+            <ul className='flex flex-col bg-gray-700 absolute pp-2 rounded-lg top-14 w-full max-w-sm right-2 p-2'>
+                {searchResults.map((res:UserI)=> {
+                    return(
+                        <li key={res.id} className='my-3' onClick={()=> setVisible(false)}>
+                            <User user={res}  />
+                        </li>
+                    )
+                })}
+            </ul>  
+        )}
     </div>
   )
 }
