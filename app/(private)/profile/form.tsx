@@ -8,7 +8,7 @@ export default function Form() {
     async function handleSubmit(e:FormEvent) {
         e.preventDefault()
         const res = await fetch("/api/posts",{
-            method:'post',
+            method:'POST',
             body:JSON.stringify({content:post})
         })
 

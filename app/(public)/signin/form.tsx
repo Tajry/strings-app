@@ -11,7 +11,7 @@ export default function From() {
     const handdleSubmit =  async (e:FormEvent)=>{
         e.preventDefault()
         const res = await fetch("/api/login", {
-            method:'post',
+            method:'POST',
 
             body:JSON.stringify({username:username ,password: password})
         })

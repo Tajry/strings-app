@@ -23,7 +23,7 @@ const {data:dataFollow ,error:errorFollow , isLoading:isLoadingFollow} =  useSWR
 
   const handleUnfollow = async () =>{
     const res = await fetch('/api/follows/'+user.id ,{
-        method:'delete'
+        method:'DELETE'
     })
     if (res.ok) {
         mutate("/api/follows?user_id="+user.id)
@@ -32,7 +32,7 @@ const {data:dataFollow ,error:errorFollow , isLoading:isLoadingFollow} =  useSWR
 
   const handleFollow = async () =>{
     const res = await fetch("/api/follows",{
-        method:'post',
+        method:'POST',
         body: JSON.stringify({user_id:user.id})
     })
     if (res.ok) {
