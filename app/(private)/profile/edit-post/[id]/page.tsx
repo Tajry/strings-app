@@ -2,6 +2,7 @@
 import React from 'react'
 import useSWR from 'swr'
 import Form from './form'
+import DeleteBtn from './delete-btn'
 
 export default function EditPost({params}:{params:{id:number}}) {
     // console.log(params.id)
@@ -13,7 +14,7 @@ export default function EditPost({params}:{params:{id:number}}) {
         <h2>Edit Post</h2>
         <div className='flex flex-col gap-10'>
             <Form posts={data.data} />
-            {/* <DeleteBtn /> */}
+            <DeleteBtn posts={data.data} />
         </div>
     </div>
   )
