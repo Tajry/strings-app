@@ -1,8 +1,13 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
+import * as _ from 'lodash';
+
+
 
 export default function SearchBar() {
     const [searchResults  , setSearchResults] = useState([])
 
+    const debouncedFetchSearchResults = _.debounce(fetchSearchResults , 500);
+    
     async function fetchSearchResults(searchText:string) {
         
         const res = await fetch('/api/search?q='+searchText)
@@ -14,7 +19,8 @@ export default function SearchBar() {
     }
 
     const handleChange = async (event:ChangeEvent<HTMLInputElement>)=>{
-        fetchSearchResults(event.target.value)
+        console.log(event.currentTarget.value)
+        debouncedFetchSearchResults(event.target.value)
         
     }
 
