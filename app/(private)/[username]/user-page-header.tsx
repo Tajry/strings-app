@@ -12,7 +12,7 @@ const {data:dataFollow ,error:errorFollow , isLoading:isLoadingFollow} =  useSWR
   if (errorFollow || errorFollow) return <div>failed to load</div>
   if (isLoadingFollow || isLoadingUser) return <div>loading....</div>
 
-  console.log(dataUser , dataFollow)
+  // console.log(dataUser , dataFollow)
 
   if (dataUser.data.length == 0) {
     notFound();
