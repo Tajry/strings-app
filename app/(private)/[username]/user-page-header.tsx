@@ -43,7 +43,7 @@ const {data:dataFollow ,error:errorFollow , isLoading:isLoadingFollow} =  useSWR
 
 
   return (
-   <header className='w-full bg-slate-800 p-2 rounded-lg flex flex-row justify-between'>
+   <header className='w-full dark:   p-2 rounded-lg flex flex-row justify-between'>
     <div className='flex w-full justify-between '>
         <h1 className='text-lg font-bold'>{username}</h1>
         {dataFollow.data.length > 0 && (

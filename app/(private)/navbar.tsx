@@ -9,26 +9,26 @@ export default function Navbar() {
 
 
   return (
-    <nav className='flex max-w-md w-full p-5 bg-slate-800 rounded-lg my-2'>
+    <nav className='flex max-w-md w-full p-5 bg-slate-800   rounded-lg my-2'>
       <ul className='flex flex-row justify-around w-full'>
         <li>
           <Link 
-          className={pathname.startsWith("/feed") ? "text-green-400" : ""}
+          className={pathname.startsWith("/feed") ? "text-green-400" : "hover:text-slate-200"}
           href={'/feed'}>feed</Link>
         </li>
         <li>
           <Link 
-            className={pathname.startsWith("/profile") ? "text-green-400" : ""}
+            className={pathname.startsWith("/profile") ? "text-green-400" : "hover:text-slate-200"}
           href={'/profile'}>profile</Link>
         </li>
         <li>
           <Link
-           className={pathname.startsWith("/following") ? "text-green-400" : ""}
+           className={pathname.startsWith("/following") ? "text-green-400" : "hover:text-slate-200"}
           href={'/following'}>following</Link>
         </li>
         <li>
           <Link
-           className={pathname.startsWith("/follower") ? "text-green-400" : ""}
+           className={pathname.startsWith("/follower") ? "text-green-400" : "hover:text-slate-200"}
           href={'/follower'}>follower</Link>
         </li>
       </ul>
