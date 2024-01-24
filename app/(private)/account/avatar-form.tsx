@@ -27,6 +27,7 @@ export default function AvatarForm() {
                 
             </div>
         )}
+        <input type="file" />
     </form>
   )
 }
