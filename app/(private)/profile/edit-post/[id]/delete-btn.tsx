@@ -19,8 +19,8 @@ export default function DeleteBtn({posts}:{posts:PostI}) {
 
     const handleClick = async () => {
         // state.showConfirm = !state.showConfirm
-        const newState = Object.assign({},state , {showConfirm: !state.showConfirm})
-        setState(newState)
+        // const newState = Object.assign({},state , {showConfirm: !state.showConfirm})
+        setState({...state , showConfirm: !state.showConfirm})
     }
 
   return (
@@ -32,7 +32,7 @@ export default function DeleteBtn({posts}:{posts:PostI}) {
             <div>
                 <p>Are you sure you want to delete this post ?</p>
                 <div>
-                    <button className='text-red-400 mx-3'>yes</button>
+                    <button className='text-red-400 mx-3' onClick={handleDeleteBtn}>yes</button>
                     <button className="text-bule-400" onClick={handleClick}>no</button>
                 </div>
             </div>

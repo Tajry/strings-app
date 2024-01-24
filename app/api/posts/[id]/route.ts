@@ -36,9 +36,9 @@ export async function PATCH(request:Request , {params}:{params:{id:number}}) {
 export async function DELETE(request:Request , {params}:{params:{id:number}}) {
     const jwtPlayload = await getJWTPayload()
     const res  = await sql("delete from posts where id = $1 and user_id = $2" ,
-        [jwtPlayload.sub , params.id]
+        [ params.id ,jwtPlayload.sub ]
     )
-    if (res.rowCount == 0) {
+    if (res.rowCount != 0) {
         return NextResponse.json({msg:'delete success'})
     }else {
         return NextResponse.json({error:'not found'} ,{status:404}) 
