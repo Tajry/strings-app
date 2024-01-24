@@ -7,7 +7,7 @@ export default function FollowingContainer() {
     const [cnt , setCnt] = useState(1)
     const page = [];
     for(let i =0; i< cnt ;i++) {
-        page.push(<FollowingList index={i} />)
+        page.push(<FollowingList index={i} key={i} />)
     }
 
   return (
