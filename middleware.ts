@@ -32,7 +32,7 @@ export async function middleware(request:NextRequest) {
         }
     }
 
-    if (authenticatedAPIRoutes.includes(true)) {
+    if (authenticatedCronRoutes.includes(true)) {
         const key = request.nextUrl.searchParams.get('x_api_key');
         const isAuthenticated = key === process.env.CRON_API_KEY
         if (!isAuthenticated) {
