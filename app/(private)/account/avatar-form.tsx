@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import useSWR from 'swr'
 
@@ -27,7 +28,7 @@ export default function AvatarForm() {
                 
             </div>
         )}
-        <input type="file" />
+        <Link href={'/avatar/upload'}>Update avatar</Link>
     </form>
   )
 }
